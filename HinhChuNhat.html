@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="HinhChuNhat.js"></script>
+
+</head>
+<style>
+  canvas {
+    margin: auto;
+    display: block;
+  }
+</style>
+<body>
+
+<table border="1px" style="width: 100%">
+  <tr>
+
+    <td colspan="2">
+      <canvas id="HinhChuNhat" width="800" height="500" style="border: 4px solid blue"></canvas>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <label>chieu dai</label>
+    </td>
+    <td>
+      <input id="chieuDai">
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <label>chieu rong</label>
+    </td>
+    <td>
+      <input id="chieuRong">
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <label>chu vi:</label>
+    </td>
+    <td>
+      <h1 id="chuVi"></h1>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <label>dien tich:</label>
+    </td>
+    <td>
+      <h1 id="dienTich"></h1>
+    </td>
+  </tr>
+  <tr>
+
+
+  </tr>
+  <tr>
+    <td>
+      <label>toa do x:</label>
+    </td>
+    <td>
+      <input id="toaDox">
+    </td>
+
+  </tr>
+  <tr>
+    <td>
+      <label>toa do y:</label>
+    </td>
+    <td>
+      <input id="toaDoy">
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <button onclick="hinhChuNhat()">ket qua:</button>
+    </td>
+
+  </tr>
+
+</table>
+<script>
+  function hinhChuNhat() {
+    let chieuDai = +document.getElementById('chieuDai').value;
+    console.log('day la chieu dai=======', chieuDai)
+
+    let chieuRong = +document.getElementById('chieuRong').value;
+    console.log("day la chieu rong========", chieuRong)
+
+    let hinhChuNhat1 = new HinhChuNhat(chieuDai, chieuRong);
+    let cv = hinhChuNhat1.getCv()
+    console.log('cv o day =====', cv)
+    let dt = hinhChuNhat1.getDt()
+    console.log('dt la ======', dt)
+    document.getElementById('chuVi').innerHTML = cv
+    document.getElementById('dienTich').innerHTML = dt
+    let toaDoX = +document.getElementById('toaDox').value;
+    let toaDoY = +document.getElementById('toaDoy').value;
+
+    let canvas = document.getElementById('HinhChuNhat');
+    let ctx = canvas.getContext('2d')
+    ctx.clearRect(0,0,canvas.width,canvas.height)
+    ctx.beginPath()
+    ctx.fillStyle= 'red'
+    ctx.fillRect(toaDoX,toaDoY,chieuDai,chieuRong)
+    ctx.fill()
+    ctx.closePath()
+  }
+
+</script>
+
+</body>
+</html>
